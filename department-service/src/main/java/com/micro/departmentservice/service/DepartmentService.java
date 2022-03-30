@@ -1,0 +1,26 @@
+package com.micro.departmentservice.service;
+
+import com.micro.departmentservice.data.Department;
+import com.micro.departmentservice.repository.DepartmentRepository;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Optional;
+
+@Service
+@Slf4j
+public class DepartmentService {
+    @Autowired
+    private DepartmentRepository departRepo;
+
+    public Department createDepart(Department depart) {
+        log.info("inside createDepart method in DepartmentService");
+       return departRepo.save(depart);
+    }
+
+    public Optional<Department> findDerpatById(Long id) {
+        log.info("inside findDepart method in DepartmentService");
+        return departRepo.findById(id);
+    }
+}
