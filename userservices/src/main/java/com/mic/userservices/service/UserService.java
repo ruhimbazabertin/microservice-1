@@ -22,6 +22,7 @@ public class UserService {
     public User createUser(User user) {
         log.info("INSIDE CREATEUSER OF USERCONTROLLER");
         return userRepo.save(user);
+
     }
 
     public ResponseTemplateVO getUserWithDepart(Long id) {

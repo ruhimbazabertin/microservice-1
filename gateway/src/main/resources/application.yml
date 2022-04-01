@@ -17,6 +17,25 @@ spring:
           predicates:
             - Path=/api/v1/departments/**
 
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+
+resilience4j:
+  retry:
+    instances:
+      USER-SERVICE:
+        maxRetryAttempts: 3
+        waitDuration: 2s
+
   eureka:
     instance:
       hostname: localhost
